@@ -1,12 +1,16 @@
-import asyncio
 import os
+import asyncio
 from threading import Thread
 from flask import Flask
+from dotenv import load_dotenv
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 
-TOKEN = "8794735228:AAHI77zmR-IIm7JeP6-zuyDhz9QzM_rWdWk"
-ADMIN_ID = 8226208121
+# Загружаем переменные из .env
+load_dotenv()
+
+TOKEN = os.getenv("BOT_TOKEN")
+ADMIN_ID = int(os.getenv("ADMIN_ID"))
 
 # --- Flask приложение для Render ---
 flask_app = Flask(__name__)
